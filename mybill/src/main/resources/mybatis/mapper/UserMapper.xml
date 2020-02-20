@@ -18,4 +18,8 @@
         user_type=#{userType}
         where id=#{id}
     </update>
+
+    <select id="getUserById" resultType="com.example.bean.User">
+        select * from user where id=#{id}
+    </select>
 </mapper>

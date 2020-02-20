@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>view</title>
+</head>
+<body>
+<div>
+    <table>
+        <tr>
+            <th width="10%">用户名</th>
+            <th width="20%">真实姓名</th>
+            <th width="10%">性别</th>
+            <th width="10%">出生日期</th>
+            <th width="10%">用户类型</th>
+        </tr>
+        <tr>
+            <th><span th:text="${user.username}">username</span></th>
+            <th><span th:text="${user.realName}">realName</span></th>
+            <th><span th:text="${user.gender == 1 ? '女' : '男'}">gender</span></th>
+            <th><span th:text="${#dates.format(user.birthday, 'yyyy-MM-dd')}">birthday</span></th>
+            <th><span th:text="${user.userType==1 ? '管理员' : (user.userType==2 ? '经理' : '普通用户') }">userType</span></th>
+        </tr>
+    </table>
+    <div>
+        <a onclick="history.back()" href="#">返回</a>
+    </div>
+</div>
+</body>
+</html>

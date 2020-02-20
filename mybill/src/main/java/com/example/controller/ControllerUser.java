@@ -39,4 +39,13 @@ public class ControllerUser {
         userService.updateUser(user);
         return "redirect:/logout";
     }
+
+    @GetMapping("/user/{id}")
+    public String view(@PathVariable("id") int id,
+                       @RequestParam(value = "type", defaultValue = "view") String type,
+                       Map<String, Object> map){
+        User user = userService.getUserById(id);
+        map.put("user", user);
+        return "user/"+type;
+    }
 }
