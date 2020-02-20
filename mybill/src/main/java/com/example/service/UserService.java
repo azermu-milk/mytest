@@ -21,4 +21,14 @@ public class UserService implements UserMapper {
     public User getUserByName(String username) {
         return userMapper.getUserByName(username);
     }
+
+    @Override
+    public int updateUser(User user) {
+        return userMapper.updateUser(user);
+    }
+
+    @Override
+    public User getUserById(int id) {
+        return userMapper.getUserById(id);
+    }
 }

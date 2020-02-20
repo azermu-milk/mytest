@@ -4,7 +4,6 @@ import com.example.bean.User;
 import com.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
@@ -15,23 +14,33 @@ public class LoginController {
     @Autowired
     UserService userService;
 
+    @RequestMapping("/index")
+    public String index(){
+        return "main/index";
+    }
     @RequestMapping("/login")
     public String login(HttpSession httpSession, String username, String password){
-        System.out.println("controller login");
-        if(StringUtils.isEmpty(username) || StringUtils.isEmpty(password)) {
-            System.out.println("empty");
-            return "login";
+        System.out.println("username="+username+",password="+password);
+        if(username.equals("") || password.equals("")){
+            return "redirect:/index";
         }
         User loginuser = userService.getUserByName(username);
         if(loginuser == null){
             System.out.println("user==null");
-            return "login";
+            return "redirect:/index";
         }
         if(!loginuser.getPassword().equals(password)){
             System.out.println("error password");
-            return "login";
+            return "redirect:/index";
         }
-        httpSession.setAttribute("loginuser", loginuser);
+        httpSession.setAttribute("loginUser", loginuser);
         return "redirect:/main.html";
+    }
+
+    @RequestMapping("/logout")
+    public String logout(HttpSession httpSession){
+        httpSession.removeAttribute("loginUser");
+        httpSession.invalidate();
+        return "redirect:/index";
     }
 }

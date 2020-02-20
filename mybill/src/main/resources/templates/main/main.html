@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>main</title>
+    <link rel="stylesheet" th:href="@{/css/public.css}" href="../css/public.css"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}" ref="../css/style.css"/>
+</head>
+<body>
+<h1>main</h1>
+<section class="publicMian ">
+    <div class="left" id="public_left">
+        <h2 class="leftH2"><span class="span1"></span>功能列表 <span></span></h2>
+        <nav>
+            <ul class="list">
+                <!--<li th:id="${activeUri == 'bill' ? 'active': ''}" id="active"><a th:href="@{/bills}" href="../bill/list.html">账单管理</a></li>-->
+                <!--<li th:id="${activeUri == 'provider' ? 'active': ''}" ><a th:href="@{/providers}" href="../provider/list.html">供应商管理</a></li>-->
+                <li ><a th:href="@{/list/users}" >用户管理</a></li>
+                <li ><a th:href="@{/user/pwd}" >密码修改</a></li>
+                <li ><a th:href="@{/logout}" >退出系统</a></li>
+            </ul>
+        </nav>
+    </div>
+
+</section>
+</body>
+</html>

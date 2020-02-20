@@ -9,6 +9,15 @@ public class MySpringMvcConfig implements WebMvcConfigurer {
     //添加视图控制器
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/main.html").setViewName("main");
+        registry.addViewController("main.html").setViewName("main/main");
+        registry.addViewController("index.html").setViewName("main/index");
+    }
+    //配置拦截器
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new LoginInterceptor())
+                .addPathPatterns("/**")
+                .excludePathPatterns("/", "/login", "/index.html")
+                .excludePathPatterns("/test", "/thymeleaf");
     }
 }

@@ -13,16 +13,26 @@ public class ControllerUser {
     @Autowired
     UserService userService;
 
-    @ResponseBody
-    @RequestMapping("/listuser")
-    public String list(){
-        System.out.println("controller list");
-        return userService.listAll().toString();
+    @RequestMapping("/list/users")
+    public String listUser(Map<String, Object> map){
+
+        List<User> users = userService.listAll();
+        map.put("users", users);
+        return "user/list";
     }
 
-    @ResponseBody
-    @RequestMapping("/name/{username}")
-    public String getUserByName(@PathVariable String username){
-        return userService.getUserByName(username).toString();
+    @GetMapping("/user/pwd")
+    public String toUpdatePwdPage(HttpServletRequest httpServletRequest){
+        System.out.println("1-method="+httpServletRequest.getMethod());
+        return "main/password";
+    }
+
+    @PostMapping("/user/pwd")
+    public String updatePwd(HttpSession httpSession, String password, HttpServletRequest httpServletRequest){
+        System.out.println("2-method="+httpServletRequest.getMethod());
+        User user = (User) httpSession.getAttribute("loginUser");
+        user.setPassword(password);
+        userService.updateUser(user);
+        return "redirect:/logout";
     }
 }

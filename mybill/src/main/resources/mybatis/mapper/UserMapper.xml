@@ -11,4 +11,11 @@
     <select id="getUserByName" resultType="com.example.bean.User">
         select * from user where username = #{username}
     </select>
+
+    <update id="updateUser">
+        update user set username=#{username}, real_name=#{realName},
+        password=#{password}, gender=#{gender}, birthday=#{birthday},
+        user_type=#{userType}
+        where id=#{id}
+    </update>
 </mapper>

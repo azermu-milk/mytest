@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>list</title>
+    <link rel="stylesheet" th:href="@{/css/public.css}" href="../css/public.css"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}" ref="../css/style.css"/>
+</head>
+<body>
+<!--用户-->
+<table class="providerTable" cellpadding="0" cellspacing="0">
+    <tr class="firstTr">
+        <th width="10%">用户名</th>
+        <th width="20%">真实姓名</th>
+        <th width="10%">性别</th>
+        <th width="10%">出生日期</th>
+        <th width="10%">用户类型</th>
+        <th width="30%">操作</th>
+    </tr>
+    <tr th:each="u : ${users}">
+        <td th:text="${u.username}">xxx</td>
+        <td th:text="${u.realName}">xx</td>
+        <!--性别：1 女  2 男-->
+        <td th:text="${u.gender == 1 ? '女' : '男'}">x</td>
+        <td th:text="${#dates.format(u.birthday, 'yyyy-MM-dd')}">xxx</td>
+        <!--1管理员  2经理  3普通用户-->
+        <td th:text="${u.userType==1 ? '管理员' : (u.userType==2 ? '经理' : '普通用户') }">xx</td>
+        <td>
+            <a th:href="@{/user/} + ${u.id}" ><img th:src="@{/img/read.png}" alt="查看" title="查看"/></a>
+            <a th:href="@{/user/} + ${u.id} +'?type=update'" ><img th:src="@{/img/xiugai.png}" alt="修改" title="修改"/></a>
+            <a th:attr="del_uri=@{/user/}+${u.id}"  href="#" class="delete" ><img th:src="@{/img/schu.png}"  alt="删除" title="删除"/></a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
