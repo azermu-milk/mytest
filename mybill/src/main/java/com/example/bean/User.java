@@ -1,19 +1,22 @@
 package com.example.bean;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class User {
-    private int id;
+    private Integer id;
     private String username;
     private String realName;
     private String password;
     //性别 1：女   2：男
     private int gender;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
     //1管理员 2经理 3普通用户
     private int userType;
 
-    public User(int id, String username, String realName, String password, int gender, Date birthday, int userType) {
+    public User(Integer id, String username, String realName, String password, int gender, Date birthday, int userType) {
         this.id = id;
         this.username = username;
         this.realName = realName;
@@ -36,11 +39,11 @@ public class User {
                 '}';
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

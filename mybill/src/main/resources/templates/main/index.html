@@ -4,21 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <title>login</title>
+    <link rel="stylesheet" th:href="@{/css/public.css}" href="../css/public.css"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}" ref="../css/style.css"/>
 </head>
-<body>
-<form th:action="@{/login}"  method="post">
-    <div>
-        <label>用户名</label>
-        <input type="text" name="username"/>
-    </div>
-    <div>
-        <label>用户密码</label>
-        <input type="text" name="password"/>
-    </div>
-    <div>
-        <label>登录</label>
-        <button type="submit">login</button>
-    </div>
-</form>
+<body style="background: #ffffff">
+<section class="loginBox" style="margin-top: 100px">
+    <section class="loginCont">
+        <form class="loginForm" th:action="@{/login}"  method="post">
+            <div class="inputbox">
+                <label>用户名</label>
+                <input type="text" name="username"/>
+            </div>
+            <div class="inputbox">
+                <label>用户密码</label>
+                <input type="text" name="password"/>
+            </div>
+            <div class="subBtn" style="margin-top: 5px">
+                <input type="submit" value="登录" onclick="this.form.submit()"/>
+            </div>
+        </form>
+    </secion>
+</section>
 </body>
 </html>

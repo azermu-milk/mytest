@@ -7,9 +7,14 @@
     <link rel="stylesheet" th:href="@{/css/public.css}" href="../css/public.css"/>
     <link rel="stylesheet" th:href="@{/css/style.css}" ref="../css/style.css"/>
 </head>
-<body>
+<body style="background: #ffffff">
 <!--用户-->
 <table class="providerTable" cellpadding="0" cellspacing="0">
+    <tr>
+        <a type="button" th:href="@{/user/add}">
+            <button>增加用户</button>
+        </a>
+    </tr>
     <tr class="firstTr">
         <th width="10%">用户名</th>
         <th width="20%">真实姓名</th>
@@ -29,12 +34,14 @@
         <td>
             <a th:href="@{/user/} + ${u.id}" ><img th:src="@{/img/read.png}" alt="查看" title="查看"/></a>
             <a th:href="@{/user/} + ${u.id} +'?type=update'" ><img th:src="@{/img/xiugai.png}" alt="修改" title="修改"/></a>
-            <a th:attr="del_uri=@{/user/}+${u.id}"  href="#" class="delete" ><img th:src="@{/img/schu.png}"  alt="删除" title="删除"/></a>
+            <a th:href="@{/delete/user/}+${u.id}" ><img th:src="@{/img/schu.png}"  alt="删除" title="删除"/></a>
         </td>
     </tr>
 </table>
 <div>
-    <input type="button" value="返回" onclick="history.back()">
+    <a th:href="@{/main/main}">
+        <button>返回</button>
+    </a>
 </div>
 </body>
 </html>

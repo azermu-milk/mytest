@@ -4,9 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <title>view</title>
+    <link rel="stylesheet" th:href="@{/css/public.css}" href="../css/public.css"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}" ref="../css/style.css"/>
 </head>
-<body>
-<div>
+<body style="background: #ffffff">
+<div class="providerTable">
     <table>
         <tr>
             <th width="10%">用户名</th>
@@ -24,7 +26,7 @@
         </tr>
     </table>
     <div>
-        <a onclick="history.back()" href="#">返回</a>
+        <input type="button" value="返回" onclick="history.back(-1)">
     </div>
 </div>
 </body>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>add</title>
+    <link rel="stylesheet" th:href="@{/css/public.css}" href="../css/public.css"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}" ref="../css/style.css"/>
+</head>
+<body style="background: #ffffff">
+<h1>add</h1>
+<div class="providerAdd">
+    <form th:action="@{/user/add}" method="post">
+        <div>
+            <label for="username">用户名：</label>
+            <input type="text" name="username" id="username"/>
+            <span>*请输入用户名，且不能重复</span>
+        </div>
+        <div>
+            <label for="realName">真实姓名：</label>
+            <input type="text" name="realName" id="realName"/>
+            <span >*请输入真实姓名</span>
+        </div>
+        <div>
+            <label for="userpassword">用户密码：</label>
+            <input type="text"  name="userpassword" id="userpassword"/>
+            <span>*密码长度必须大于6位小于20位</span>
+
+        </div>
+        <div>
+            <label for="password">确认密码：</label>
+            <input type="text" name="password" id="password"/>
+            <span id="pwdText" >*请输入确认密码</span>
+        </div>
+        <div>
+            <label>用户性别：</label>
+            <select name="gender">
+                <option value="1">女</option>
+                <option value="2">男</option>
+            </select>
+            <span></span>
+        </div>
+        <div>
+            <label for="birthday">出生日期：</label>
+            <input type="text" name="birthday" id="birthday"/>
+            <span >*格式 yyyy-MM-dd </span>
+        </div>
+        <div>
+            <label >用户类别：</label>
+            <input type="radio" name="userType" value="1" />管理员
+            <input type="radio" name="userType" value="2" checked/>经理
+            <input type="radio" name="userType" value="3"/>普通用户
+        </div>
+        <div class="providerAddBtn">
+            <!--<a href="#">保存</a>-->
+            <!--<a href="userList.html">返回</a>-->
+            <input type="button" onclick="this.form.submit()" value="保存" />
+            <input type="button" value="返回" onclick="history.back(-1)"/>
+        </div>
+    </form>
+</div>
+</body>
+</html>

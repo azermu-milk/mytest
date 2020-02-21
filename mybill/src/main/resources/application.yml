@@ -11,4 +11,4 @@ mybatis:
   mapper-locations: classpath:mybatis/mapper/*.xml
 logging:
   level:
-    com.example.mapper: debug
+    com.example.mapper.UserMapper: debug

@@ -22,4 +22,13 @@
     <select id="getUserById" resultType="com.example.bean.User">
         select * from user where id=#{id}
     </select>
+
+    <delete id="deleteUserById">
+        delete from user where id=#{id}
+    </delete>
+
+    <insert id="addUser">
+        insert into user ( username, real_name, password, gender, birthday, user_type)
+        values (#{username}, #{realName}, #{password}, #{gender}, #{birthday}, #{userType});
+    </insert>
 </mapper>

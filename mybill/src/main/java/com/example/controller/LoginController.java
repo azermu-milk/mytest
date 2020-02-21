@@ -4,8 +4,10 @@ import com.example.bean.User;
 import com.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -37,6 +39,11 @@ public class LoginController {
         return "redirect:/main.html";
     }
 
+    @GetMapping("/main/main")
+    public String mainMain(HttpServletRequest httpServletRequest){
+        System.out.println("mainMain method="+httpServletRequest.getMethod());
+        return "redirect:/main.html";
+    }
     @RequestMapping("/logout")
     public String logout(HttpSession httpSession){
         httpSession.removeAttribute("loginUser");

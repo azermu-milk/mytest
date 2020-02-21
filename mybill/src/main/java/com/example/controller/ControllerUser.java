@@ -40,12 +40,44 @@ public class ControllerUser {
         return "redirect:/logout";
     }
 
+    //查看用户详细信息
     @GetMapping("/user/{id}")
-    public String view(@PathVariable("id") int id,
+    public String view(HttpServletRequest httpServletRequest, @PathVariable("id") int id,
                        @RequestParam(value = "type", defaultValue = "view") String type,
                        Map<String, Object> map){
+        System.out.println("view method="+httpServletRequest.getMethod());
         User user = userService.getUserById(id);
         map.put("user", user);
         return "user/"+type;
+    }
+
+    //更新用户信息
+    @PostMapping("/user")
+    public String update(HttpServletRequest httpServletRequest, User user){
+        System.out.println("update method="+httpServletRequest.getMethod());
+        userService.updateUser(user);
+        return "redirect:/list/users";
+    }
+
+    //删除用户
+    @GetMapping("/delete/user/{id}")
+    public String delete(HttpServletRequest httpServletRequest, @PathVariable(value = "id") int id){
+        System.out.println("delete method="+httpServletRequest.getMethod());
+        userService.deleteUserById(id);
+        return "redirect:/list/users";
+    }
+
+    //跳转到增加用户界面
+    @GetMapping("/user/add")
+    public String toAdd(HttpServletRequest httpServletRequest){
+        System.out.println("toadd method="+httpServletRequest.getMethod());
+        return "/user/add";
+    }
+
+    @PostMapping("/user/add")
+    public String add(HttpServletRequest httpServletRequest, User user){
+        System.out.println("add method="+httpServletRequest.getMethod());
+        userService.addUser(user);
+        return "redirect:/list/users";
     }
 }

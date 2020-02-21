@@ -31,4 +31,12 @@ public class UserService implements UserMapper {
     public User getUserById(int id) {
         return userMapper.getUserById(id);
     }
+
+    public int deleteUserById(int id) {
+        return userMapper.deleteUserById(id);
+    }
+
+    public int addUser(User user) {
+        return userMapper.addUser(user);
+    }
 }
