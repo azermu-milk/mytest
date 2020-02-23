@@ -9,6 +9,7 @@ spring:
     cache: false
 mybatis:
   mapper-locations: classpath:mybatis/mapper/*.xml
+  config-location: classpath:mybatis/mybatis-config.xml
 logging:
   level:
-    com.example.mapper.UserMapper: debug
+    com.example.mapper: debug

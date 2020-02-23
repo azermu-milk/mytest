@@ -13,4 +13,10 @@ public interface ProviderMapper {
     List<Provider> pListAll();
 
     Provider getProByPid(int pid);
+
+    int deleteProByPid(int pid);
+
+    int updateProv(Provider provider);
+
+    int addProv(Provider provider);
 }

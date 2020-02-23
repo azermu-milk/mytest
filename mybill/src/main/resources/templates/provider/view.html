@@ -1,10 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>view</title>
+    <link rel="stylesheet" th:href="@{/css/public.css}"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
 </head>
-<body>
+<body style="background: #ffffff">
 <h1>view</h1>
+<div class="providerView">
+    <p><strong>供应商编码:</strong><span th:text="${provider.pid}">pid</span></p>
+    <p><strong>供应商名称:</strong><span th:text="${provider.providerName}">providerName</span></p>
+    <p><strong>联系人:</strong><span th:text="${provider.people}">people</span></p>
+    <p><strong>联系电话:</strong><span th:text="${provider.phone}">phone</span></p>
+    <p><strong>传真:</strong><span th:text="${provider.fax}">fax</span></p>
+    <p><strong>描述:</strong><span th:text="${provider.describe}">describe</span></p>
+
+    <a th:href="@{/list/providers}">返回</a>
+</div>
 </body>
 </html>

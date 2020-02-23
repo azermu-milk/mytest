@@ -11,4 +11,18 @@
     <select id="getProByPid" resultType="com.example.bean.Provider">
         select * from provider where pid=#{pid}
     </select>
+
+    <delete id="deleteProByPid">
+        delete from provider where pid=#{pid}
+    </delete>
+
+    <update id="updateProv">
+        update provider set provider_code=#{providerCode}, providerName=#{providerName}, people=#{people},
+         phone=#{phone}, address=#{address}, fax=#{fax}, `describe`=#{describe}, create_date=now() where pid=#{pid}
+    </update>
+
+    <insert id="addProv">
+        insert into provider ( provider_code, providerName, people, phone, address, fax, `describe`, create_date)
+        values ( #{providerCode}, #{providerName}, #{people}, #{phone}, #{address}, #{fax},#{describe}, now())
+    </insert>
 </mapper>

@@ -23,4 +23,19 @@ public class ProviderService implements ProviderMapper {
     public Provider getProByPid(int pid) {
         return providerMapper.getProByPid(pid);
     }
+
+    @Override
+    public int deleteProByPid(int pid) {
+        return providerMapper.deleteProByPid(pid);
+    }
+
+    @Override
+    public int updateProv(Provider provider) {
+        return providerMapper.updateProv(provider);
+    }
+
+    @Override
+    public int addProv(Provider provider) {
+        return providerMapper.addProv(provider);
+    }
 }
