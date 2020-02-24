@@ -7,8 +7,7 @@ import java.util.List;
 
 @Repository
 public interface UserMapper {
-
-    List<User> listAll();
+    List<User> uListAll();
 
     User getUserByName(String username);
 

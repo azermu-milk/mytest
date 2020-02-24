@@ -75,7 +75,8 @@ CREATE TABLE `user` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `username` varchar(25) DEFAULT NULL,
   `real_name` varchar(25) DEFAULT NULL,
-  `password` varchar(25) DEFAULT NULL,
+  `password` varchar(128) DEFAULT NULL,
+  `salt` varchar(128) DEFAULT NULL,
   `gender` int(1) DEFAULT NULL COMMENT '性别：1 女  2 男',
   `birthday` datetime DEFAULT NULL,
   `user_type` int(1) DEFAULT NULL COMMENT '1管理员  2经理  3普通用户',
@@ -85,7 +86,7 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'root', '系统管理员', '123', '1', '2003-11-12 00:00:00', '1');
-INSERT INTO `user` VALUES ('2', 'lisi', '李四', '123', '2', '1983-11-12 00:00:00', '2');
-INSERT INTO `user` VALUES ('3', 'wangwu', '王五', '123', '2', '1953-11-12 00:00:00', '3');
-INSERT INTO `user` VALUES ('4', 'zhangsan', '张三', '123', '1', '1973-11-12 00:00:00', '3');
+INSERT INTO `user` VALUES ('1', 'root', '系统管理员', '123', '123', '1', '2003-11-12 00:00:00', '1');
+INSERT INTO `user` VALUES ('2', 'lisi', '李四', '123', '123', '2', '1983-11-12 00:00:00', '2');
+INSERT INTO `user` VALUES ('3', 'wangwu', '王五', '123', '123', '2', '1953-11-12 00:00:00', '3');
+INSERT INTO `user` VALUES ('4', 'zhangsan', '张三', '123', '123', '1', '1973-11-12 00:00:00', '3');

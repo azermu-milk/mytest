@@ -1,6 +1,6 @@
 package com.example.service;
 
-import com.example.bean.Bill;
+import com.example.bean.BillProvider;
 import com.example.mapper.BillMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ public class BillService implements BillMapper {
     BillMapper billMapper;
 
     @Override
-    public List<Bill> bListAll() {
+    public List<BillProvider> bListAll() {
         return billMapper.bListAll();
     }
 }

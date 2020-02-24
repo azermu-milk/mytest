@@ -2,9 +2,12 @@ package com.example.controller;
 
 import com.example.bean.User;
 import com.example.service.UserService;
+import org.apache.shiro.crypto.SecureRandomNumberGenerator;
+import org.apache.shiro.crypto.hash.SimpleHash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.HtmlUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -17,25 +20,34 @@ public class ControllerUser {
     @Autowired
     UserService userService;
 
+    //列出所有用户
     @RequestMapping("/list/users")
     public String listUser(Map<String, Object> map){
 
-        List<User> users = userService.listAll();
+        List<User> users = userService.uListAll();
         map.put("users", users);
         return "user/list";
     }
 
+    //跳转到修改密码界面
     @GetMapping("/user/pwd")
     public String toUpdatePwdPage(HttpServletRequest httpServletRequest){
         System.out.println("1-method="+httpServletRequest.getMethod());
         return "main/password";
     }
 
+    //修改当前登录用户的密码
     @PostMapping("/user/pwd")
     public String updatePwd(HttpSession httpSession, String password, HttpServletRequest httpServletRequest){
         System.out.println("2-method="+httpServletRequest.getMethod());
         User user = (User) httpSession.getAttribute("loginUser");
-        user.setPassword(password);
+
+        String salt = user.getSalt();
+        //设置hash迭代次数
+        int times = 2;
+        //获取hash后的密码
+        String encodingPassword = new SimpleHash("md5", password, salt, times).toString();
+        user.setPassword(encodingPassword);
         userService.updateUser(user);
         return "redirect:/logout";
     }
@@ -77,6 +89,22 @@ public class ControllerUser {
     @PostMapping("/user/add")
     public String add(HttpServletRequest httpServletRequest, User user){
         System.out.println("add method="+httpServletRequest.getMethod());
+        String password = user.getPassword();
+        String username = user.getUsername();
+        username = HtmlUtils.htmlEscape(username);
+        user.setUsername(username);
+        User user1 = userService.getUserByName(username);
+        if(null != user1){
+            return "redirect:/list/users";
+        }
+        //生成盐，默认长度16位
+        String salt = new SecureRandomNumberGenerator().nextBytes().toString();
+        //设置hash迭代次数
+        int times = 2;
+        //获取hash后的密码
+        String encodingPassword = new SimpleHash("md5", password, salt, times).toString();
+        user.setSalt(salt);
+        user.setPassword(encodingPassword);
         userService.addUser(user);
         return "redirect:/list/users";
     }

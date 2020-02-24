@@ -9,6 +9,7 @@ public class User {
     private String username;
     private String realName;
     private String password;
+    private String salt;
     //性别 1：女   2：男
     private int gender;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -16,11 +17,12 @@ public class User {
     //1管理员 2经理 3普通用户
     private int userType;
 
-    public User(Integer id, String username, String realName, String password, int gender, Date birthday, int userType) {
+    public User(Integer id, String username, String realName, String password, String salt, int gender, Date birthday, int userType) {
         this.id = id;
         this.username = username;
         this.realName = realName;
         this.password = password;
+        this.salt = salt;
         this.gender = gender;
         this.birthday = birthday;
         this.userType = userType;
@@ -33,10 +35,19 @@ public class User {
                 ", username='" + username + '\'' +
                 ", realName='" + realName + '\'' +
                 ", password='" + password + '\'' +
+                ", salt='" + salt + '\'' +
                 ", gender=" + gender +
                 ", birthday=" + birthday +
                 ", userType=" + userType +
                 '}';
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
     }
 
     public Integer getId() {

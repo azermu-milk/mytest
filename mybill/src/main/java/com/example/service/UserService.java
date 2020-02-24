@@ -12,9 +12,10 @@ public class UserService implements UserMapper {
 
     @Autowired
     UserMapper userMapper;
+
     @Override
-    public List<User> listAll() {
-        return userMapper.listAll();
+    public List<User> uListAll() {
+        return userMapper.uListAll();
     }
 
     @Override
