@@ -20,6 +20,7 @@ public class MySpringMvcConfig implements WebMvcConfigurer {
         registry.addInterceptor(new LoginInterceptor())
                 .addPathPatterns("/**")
                 .excludePathPatterns("/", "/login", "/index.html")
-                .excludePathPatterns("/test", "/thymeleaf");
+                .excludePathPatterns("/test", "/thymeleaf")
+                .excludePathPatterns("/css/*", "/img/*","/js/*");
     }
 }
