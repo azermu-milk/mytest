@@ -53,6 +53,7 @@ public class MyWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/category/all").authenticated()
                 ///admin/**的URL都需要有root角色
                 .antMatchers("/admin/**","/reg").hasRole("root")
+                .antMatchers("/druid/**").permitAll()
                 //其他请求登录即可
                 .anyRequest().authenticated()
                 .and()

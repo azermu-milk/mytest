@@ -7,4 +7,7 @@
     <select id="loadUserByUsername" resultType="com.example.bean.User">
         select * from user where username=#{username};
     </select>
+    <select id="getAllRole" resultType="com.example.bean.Role">
+        select * from roles;
+    </select>
 </mapper>

@@ -3,17 +3,13 @@ package com.example.bean;
 /**
  * Create by Administrator on 2020/3/31.
  */
+//属性名最好和数据库字段名一样
 public class Role {
 
     private int id;
-    private String rolename;
+    private String name;
 
     public Role() {
-    }
-
-    public Role(int id, String rolename) {
-        this.id = id;
-        this.rolename = rolename;
     }
 
     public int getId() {
@@ -24,11 +20,11 @@ public class Role {
         this.id = id;
     }
 
-    public String getRolename() {
-        return rolename;
+    public String getName() {
+        return name;
     }
 
-    public void setRolename(String rolename) {
-        this.rolename = rolename;
+    public void setName(String name) {
+        this.name = name;
     }
 }
