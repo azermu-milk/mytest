@@ -16,4 +16,5 @@ public interface UserMapper {
 
     int reg(User user);
     List<Role> getAllRole();
+    List<User> getUserByNickname(@Param("nickname") String nickname);
 }

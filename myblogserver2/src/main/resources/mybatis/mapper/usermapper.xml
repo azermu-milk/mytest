@@ -10,4 +10,7 @@
     <select id="getAllRole" resultType="com.example.bean.Role">
         select * from roles;
     </select>
+    <select id="getUserByNickname" resultType="com.example.bean.User">
+        select * from user;
+    </select>
 </mapper>
