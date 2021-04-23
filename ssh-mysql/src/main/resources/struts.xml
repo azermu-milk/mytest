@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <constant name="struts.enable.DynamicMethodInvocation" value="true" />
+    <constant name="struts.devMode" value="true" />
+
+    <package name="default" namespace="/" extends="struts-default">
+<!--        使用paramsPrepareParamsStack为默认拦截器-->
+<!--        <default-interceptor-ref name="paramsPrepareParamsStack"></default-interceptor-ref>-->
+        <interceptors>
+            <interceptor-stack name="fantasystack">
+                <interceptor-ref name="paramsPrepareParamsStack">
+                    <param name="prepare.alwaysInvokePrepare">false</param>
+                </interceptor-ref>
+            </interceptor-stack>
+        </interceptors>
+        <default-interceptor-ref name="fantasystack"></default-interceptor-ref>
+        <action name="user-*" class="userAction" method="{1}">
+            <result name="{1}">/pages/list.jsp</result>
+            <result name="input">/pages/input.jsp</result>
+            <result name="success" type="redirect">/user-list</result>
+        </action>
+        <action name="user-insert" class="userAction" method="insert">
+            <result name="success" type="redirect">/user-list</result>
+        </action>
+        <action name="user-edit" class="userAction" method="edit">
+            <result name="success">/pages/edit.jsp</result>
+        </action>
+        <action name="user-update" class="userAction" method="update">
+            <result name="success" type="redirect">/user-list</result>
+        </action>
+
+
+    </package>
+
+
+</struts>
